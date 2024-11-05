@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Text Operations</h2>
+  <textarea id="textInput" rows="4" cols="50"></textarea><br><br>
+  <button onclick="analyzeText()">Analyze</button>
+  <p>Alphabets: <span id="alphabetsCount">0</span></p>
+  <p>Digits: <span id="digitsCount">0</span></p>
+  <p>Special Characters: <span id="specialCharsCount">0</span></p>
+  <input type="color" id="bgColorPicker" onchange="changeBgColor()">
+  <input type="color" id="fgColorPicker" onchange="changeFgColor()">
+
+  <script>
+    function analyzeText() {
+      const text = document.getElementById('textInput').value;
+      let alphabets = 0, digits = 0, specialChars = 0;
+      for (let char of text) {
+        if (/[a-zA-Z]/.test(char)) alphabets++;
+        else if (/\d/.test(char)) digits++;
+        else specialChars++;
+      }
+      document.getElementById('alphabetsCount').innerText = alphabets;
+      document.getElementById('digitsCount').innerText = digits;
+      document.getElementById('specialCharsCount').innerText = specialChars;
+    }
+
+    function changeBgColor() {
+      const color = document.getElementById('bgColorPicker').value;
+      document.getElementById('textInput').style.backgroundColor = color;
+    }
+
+    function changeFgColor() {
+      const color = document.getElementById('fgColorPicker').value;
+      document.getElementById('textInput').style.color = color;
+    }
+  </script>
+</body>
+</html>
